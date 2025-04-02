@@ -5,17 +5,18 @@ import "./Login.css";
 function Login() {
   const [name, SetName] = useState("");
   const [password, SetPassword] = useState("");
+  const [usuario, setUsuario] = useState([]);
   let reactNavigate = useNavigate();
 
+  
+
   function IniciarSesion(user, password) {
-    if(user === "admin" && password === "1234"){
-        reactNavigate('/Home')
+    if (user === "admin" && password === "1234") {
+      reactNavigate("/Home");
     } else {
-        alert("Bobo")
+      alert("Bobo");
     }
   }
-
-
 
   return (
     <div className="wrapper">
@@ -40,11 +41,11 @@ function Login() {
                   name="password"
                   placeholder="Password"
                   type="password"
-                  onChange={(e) => SetPassword(e.target.value)  }
+                  onChange={(e) => SetPassword(e.target.value)}
                 />
                 <button
                   className="flip-card__btn"
-                  onClick={() => IniciarSesion(name, password)} 
+                  onClick={() => IniciarSesion(name, password)}
                   type="button"
                 >
                   Let`s go!
@@ -71,11 +72,7 @@ function Login() {
                   placeholder="Password"
                   type="password"
                 />
-                <button
-                  type="button"
-                  className="flip-card__btn"
-                  
-                >
+                <button type="button" className="flip-card__btn">
                   Confirm!
                 </button>
               </form>
