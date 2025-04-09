@@ -1,7 +1,15 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Login from "../pages/Login"
+import { alertaRedireccion } from "../utils/funciones"
+
+let reactNavigate =  useNavigate;
 
 const MenuLateral = () => {
+  function cerrarSesion() {
+    localStorage.removeItem("token")
+    alertaRedireccion(reactNavigate, "anda paya bobo", "Estamos cerrando", "info")
+  }
+
   return (
     <aside className="aplicacion__menu-lateral">
       <h1 className="aplicacion__menu-lateral-logo">Track <span className="aplicacion__menu-lateral-logo--resaltado">X</span></h1>
@@ -11,10 +19,10 @@ const MenuLateral = () => {
         <Link className="aplicacion__menu-lateral-navegacion-item" to="">Gestión de envíos</Link>
         <Link className="aplicacion__menu-lateral-navegacion-item" to="">Inicio</Link>
         <Link className="aplicacion__menu-lateral-navegacion-item" to="">Gestión de clientes</Link>
-        <Link type='button' className="aplicacion__menu-lateral-navegacion-item" to="/Login">Cerrar sesión</Link>
+        <button onClick={cerrarSesion} type='button' className="aplicacion__menu-lateral-navegacion-item" to="/Login">Cerrar sesión</button>
       </nav>
     </aside>
   )
 }
 
-export default MenuLateral
+export default MenuLateral 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { alertaGenerica, alertaRedireccion, generarToken } from "../utils/funciones";
 import "./Login.css";
 
 function Login() {
@@ -9,14 +10,23 @@ function Login() {
   let reactNavigate = useNavigate();
 
   
-
   function IniciarSesion(user, password) {
     if (user === "admin" && password === "1234") {
-      reactNavigate("/Home");
+      let tokenAcceso = generarToken()
+      localStorage.setItem("token", tokenAcceso)
+
+      alertaRedireccion(
+        reactNavigate,
+        "Bienvenido",
+        "Sera redireccionado al Home",
+        "succes",
+        "/Home"
+      );
     } else {
-      alert("Bobo");
+      alertaGenerica("Bobo", "Usuario y/o Contraseña incorrecto", "error");
     }
   }
+
 
   return (
     <div className="wrapper">

@@ -2,13 +2,14 @@
 /* El objeto se construye con el componente y la ruta */
 import Home from "../pages/Home";
 import Login from "../pages/Login";
+import RutaPro from "../components/RutaPro";
 export let enrutador = [
   {
-    path: '/home',
-    element: <Home />
+    path: "/home",
+    element: <RutaPro proteger={<Home />} />,
   },
   {
-    path: '/Login',
-    element: <Login />
-  }
-]
+    path: "/Login",
+    element: <Login />,
+  },
+];
